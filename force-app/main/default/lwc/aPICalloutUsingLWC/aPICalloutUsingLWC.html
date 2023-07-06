@@ -1,0 +1,69 @@
+<template>
+    <lightning-card title="Show Images">
+        <div class="slds-var-m-around_medium">
+            <div class="slds-grid">
+                <div class="slds-col">
+                    <template if:true={productRecords}>
+                        <template for:each={productRecords} for:item="val">
+                            <div class="slds-col" key={val.id} style="margin-left: 10px;"><br>
+                                <a>
+                                    <img height="100px" width="200px" src={val.images} data-id={val.id}
+                                        onclick={handleDetails}>
+                                </a>&nbsp;
+                                <b>Name : </b>{val.title}<br>
+                            </div>
+                        </template>
+                    </template>
+                    <template if:true={isShowModal}>
+                        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+                            class="slds-modal slds-fade-in-open">
+                            <div class="slds-modal__container" >
+                                <div class="slds-modal__header" style="border: 2px solid black;">
+                                    <button
+                                        class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                        title="Close" onclick={hideModalBox} style="background-color: black;">
+                                        <lightning-icon icon-name="utility:close" alternative-text="close"
+                                            variant="inverse" size="small"></lightning-icon>
+                                        <span class="slds-assistive-text">Close</span>
+                                    </button>
+                                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate"
+                                        style="font-size: 30px; font-weight:bolder;">Image
+                                        Details</h1>
+                                </div>
+                                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                    <p> <strong>Name :- </strong>
+                                        {recordDetails.title}
+                                        <br><br>
+                                    </p>
+                                    <p> <strong>Rating :- </strong>
+                                        {recordDetails.rating}
+                                        <br><br>
+                                    </p>
+                                    <p> <strong>Stock :- </strong>
+                                        {recordDetails.stock}
+                                        <br><br>
+                                    </p>
+                                    <p> <strong>Price :- </strong>
+                                        {recordDetails.price}
+                                        <br><br>
+                                    </p>
+                                    <p><strong>Related Image :- </strong><br></p>
+                                    <template if:true={imagesList}>
+                                        <div class="slds-grid slds-gutters">
+                                            <template for:each={imagesList} for:item="photos">
+                                                <div class="slds-col" key={photos.id} style="margin-left: 10px;"><br>
+                                                    <img height="60px" width="100px" src={photos.img}>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </template>
+                                    <br><br>
+                                </div>
+                            </div>
+                        </section>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

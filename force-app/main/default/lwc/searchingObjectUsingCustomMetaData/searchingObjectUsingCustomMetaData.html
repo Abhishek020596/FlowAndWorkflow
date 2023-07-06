@@ -1,0 +1,29 @@
+<template>
+    <lightning-card>
+        <div style="display: flex;  justify-content:space-between; color: rgb(34, 35, 35); ">
+            <div style="font-size: 22px; font-weight: bolder; color:rgb(7, 97, 139); margin-left: 20px;">
+                <b>SearchRecordUsingCustomMetaData</b>
+            </div>
+        </div>
+        <div class="slds-var-m-around_large">
+            <lightning-layout vertical-align="end">
+                <lightning-layout-item flexibility="grow">
+                    <!-- <template if:true={searchKey}> -->
+                        <lightning-input type="search" value={searchKey} onchange={handleSearch}
+                            label="Search..."></lightning-input>
+                        <div style="height: 300px;">
+                            <lightning-datatable 
+                                key-field="Id" 
+                                data={data} 
+                                columns={columns} 
+                                onsave={handleSave}
+                                draft-values={saveDraftValues} 
+                                hide-checkbox-column="true">
+                            </lightning-datatable>
+                        </div>
+                    <!-- </template> -->
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+</template>

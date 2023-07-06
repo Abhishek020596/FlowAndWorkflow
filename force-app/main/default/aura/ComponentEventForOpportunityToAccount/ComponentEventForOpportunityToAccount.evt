@@ -1,0 +1,5 @@
+<aura:event type="COMPONENT" description="Event template ComponentEventForOpportunityToAccount">
+    <aura:attribute name="revenue" type="Integer" />
+    <!-- <aura:attribute name="revValues" type="Integer"/> -->
+    <!-- <aura:attribute name="toggleVal" type="Integer" /> -->
+</aura:event>

@@ -1,0 +1,17 @@
+<template>
+    <article class="slds-card ">
+        <lightning-layout>
+            <lightning-layout-item>
+                <template for:each={jsonValue.fields.columns} for:item="fld" >
+                    <c-childjsoncontentfile
+                    field-name={fld.Name}
+                    field-type={fld.FieldType}
+                    json-value={jsonValue}
+                    key={fld}
+                    >
+                    </c-childjsoncontentfile>
+                </template>
+              </lightning-layout-item>
+        </lightning-layout>
+    </article>
+</template>

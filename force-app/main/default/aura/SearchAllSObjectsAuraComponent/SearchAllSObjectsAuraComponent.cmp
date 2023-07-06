@@ -1,0 +1,40 @@
+<aura:component controller="ClearLogdetailsHandler"
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+    access="global">
+    <aura:attribute name="PageHeading" type="String" default="ClearRecordsAuraComponent" />
+    <aura:attribute name="selectedVal" type="String"/>
+    <aura:attribute name="setOfObjects" type="String[]" />
+    <aura:attribute name="allObjectsValues" type="String[]" />
+    <aura:attribute name="columns" type="String[]" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="force:refreshView" action="{!c.handleClick}" />
+    <div class="slds-page-header">
+        <div style="font-size: 22px; font-weight: bolder; color:rgb(7, 97, 139);">
+            {!v.PageHeading}
+        </div>
+        <lightning:layout>
+            <div class="slds-media__body">
+                <lightning:layoutitem>
+                    <lightning:select name="selectAccount" onchange="{!c.searchKeyChange}">
+                        <option value="" label="Select Object" selected="selected">
+                        </option>
+                        <aura:iteration items="{!v.setOfObjects}" var="item">
+                            <option value="{!item}" label="{!item}" selected="{!item.selected}">
+                                {!item}
+                            </option>
+                        </aura:iteration>
+                    </lightning:select>
+                </lightning:layoutitem>
+            </div>
+        </lightning:layout>
+        <div style="text-align: right; margin-top: 10px">
+            <lightning:button variant="brand" label="Clear" onclick="{!c.handleClick}" />
+        </div>
+        <div style="margin-top: 25px;">
+            <div style="height: 300px">
+                <lightning:datatable keyField="id" data="{! v.allObjectsValues }" columns="{! v.columns }"
+                    hideCheckboxColumn="true" />
+            </div>
+        </div>
+    </div>
+</aura:component>

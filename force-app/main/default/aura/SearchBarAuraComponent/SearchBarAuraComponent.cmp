@@ -1,0 +1,39 @@
+<aura:component controller="CustomRecordDetailsHandler"
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+    access="global">
+    <aura:attribute name="PageHeading" type="String" default="Custom Settings"/>
+    <aura:attribute name="custData" type="List"/>
+    <aura:attribute name="objectDetails" type="List"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="draftValues" type="sObject"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
+
+    <lightning:card>
+        <div class="slds-page-header">
+            <div class=" slds-page-header slds-text-heading--large slds-align--absolute">
+                {!v.PageHeading}
+            </div>
+            <lightning:layout>
+                <div class="slds-media__body">  
+                    <lightning:layoutitem>
+                        <lightning:select name="selectAccount" onchange="{!c.searchKeyChange}">
+                            <option value="" label="--Select--" selected="selected">
+                            </option>
+                            <aura:iteration items="{!v.custData}" var="item">
+                                <option value="{!item.Name}" label="{!item.Name}" selected="{!item.selected}">
+                                    {!item}
+                                </option>
+                            </aura:iteration>
+                        </lightning:select> 
+                    </lightning:layoutitem>
+                </div>
+            </lightning:layout>
+            <lightning:layout>
+                <div style="height: 300px">
+                    <lightning:datatable keyField="id" data="{!v.objectDetails}" columns="{!v.columns}"
+                        hideCheckboxColumn="true" onsave="{!c.handleSave}" draftValues="{!v.draftValues}"/>
+                </div> 
+            </lightning:layout>
+        </div>
+    </lightning:card>
+</aura:component>

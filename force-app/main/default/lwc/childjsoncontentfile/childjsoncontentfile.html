@@ -1,0 +1,14 @@
+<template>
+    <template if:true={isString}>
+       <lightning-input type="text" label="Enter some text"></lightning-input>
+   </template>
+   <template if:true={isPickList}>
+       <lightning-combobox
+       onchange={handleOptionValue} 
+       options={options}
+       value={value}>
+      </lightning-combobox>
+      
+   </template>
+
+</template>

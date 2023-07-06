@@ -1,0 +1,25 @@
+<template>
+    <lightning-card>
+        <div style="display: flex;  justify-content:space-between; color: rgb(34, 35, 35); ">
+            <div style="font-size: 22px; font-weight: bolder; color:rgb(7, 97, 139); margin-left : 20px;">
+                <lightning-icon icon-name="standard:account" alternative-text="Account" title="Custom Label"></lightning-icon> <b>Custom Label</b> 
+            </div>
+        </div>
+        <div class="slds-var-m-around_large">
+            <lightning-layout vertical-align="end">
+                <lightning-layout-item flexibility="grow">
+                    <lightning-input type="search" onchange={SaveResults}
+                        ></lightning-input>
+                    <template if:true={searchKey}>
+                        <template for:each={customLabelValue} for:item="acc">
+                            <lightning-card key={acc.id}>
+                                <lightning-formatted-text onclick={handleValue} data-id={acc.Id}
+                                    value={acc.Name}>{acc.Name}</lightning-formatted-text>
+                            </lightning-card>
+                        </template>
+                    </template>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+</template>

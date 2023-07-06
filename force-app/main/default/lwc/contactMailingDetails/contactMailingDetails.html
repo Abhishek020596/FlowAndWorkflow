@@ -1,0 +1,86 @@
+<template>
+    <lightning-card title="Contact Mailing Details" style="width: 300px">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered"
+            aria-labelledby="element-with-table-label other-element-with-table-label">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Book ID">Name</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Book Name">MailingCity</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Author Name">MailingStreet</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Publisher Name">MailingPostalCode </div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Price">MailingState</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Price">MailingCountry</div>
+                    </th>
+                    <th class="" scope="col">
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={contactList} for:item="currentItem">
+                    <tr key={currentItem.Id} class="slds-col">
+                        <td data-label="Book ID" scope="row">
+                            <div onclick={handleContactRecords} data-id={currentItem.Id}>{currentItem.Name}</div>
+                        </td>
+                        <td data-label="Book Name" scope="row">
+                            <p>{currentItem.MailingCity}</p>
+                        </td>
+                        <td data-label="Author Name" scope="row">
+                            <p>{currentItem.MailingStreet}</p>
+                        </td>
+                        <td data-label="Publisher Name" scope="row">
+                            <p>{currentItem.MailingPostalCode}</p>
+                        </td>
+                        <td data-label="Price" scope="row">
+                            <p>{currentItem.MailingState}</p>
+                        </td>
+                        <td data-label="Price" scope="row">
+                            <p>{currentItem.MailingCountry}</p>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </lightning-card>
+
+    <template if:true={isShowModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- modal header start -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close" onclick={hideModalBox}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                            size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Contact Detail</h2>
+                </header>
+
+                <!-- modal body start -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div>{contactData.Name}</div>
+                </div>
+
+                <!-- modal footer start-->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+                </footer>
+
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <!-- modal end -->
+</template>

@@ -1,0 +1,25 @@
+<template>
+    <lightning-card>
+        <template if:true={oppresultId}>
+            <div style="font-size: 20px;">Related Opportunities</div>
+            <template for:each={oppoList} for:item="opp">
+                <lightning-card key={opp.id}>
+                    <div>{opp.Name}</div>
+                    <div>{opp.ExpectedRevenue}</div>
+                    <div>{opp.StageName}</div>
+                    
+                    <div class="slds-grid slds-gutters">
+                        <label class="slds-checkbox_toggle slds-grid">
+                          <input type="checkbox" name="checkbox-toggle-16" value="checkbox-toggle-16" aria-describedby="checkbox-toggle-16" data-revenue={opp.ExpectedRevenue} onchange={changingtoggle} checked="" />
+                          <span id="checkbox-toggle-16" class="slds-checkbox_faux_container" aria-live="assertive">
+                            <span class="slds-checkbox_faux"></span>
+                            <span class="slds-checkbox_on">Active</span>
+                            <span class="slds-checkbox_off">In Active</span>
+                          </span>
+                        </label>
+                      </div>
+                </lightning-card>
+            </template>
+        </template>
+    </lightning-card>
+</template>

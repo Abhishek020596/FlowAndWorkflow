@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="QuickBookCompanyInfo">
+        <div class="slds-m-around_medium">
+            
+            <template for:each={companyDetails} for:item="comp">
+                <p key={comp.Id}>{comp.Name}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

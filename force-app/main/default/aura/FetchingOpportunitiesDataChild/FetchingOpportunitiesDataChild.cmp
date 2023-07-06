@@ -1,0 +1,36 @@
+<aura:component controller="AccountOpportunitiesDataHandler"
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"
+    access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:ApplicationEventForOpportunitiesId" action="{!c.ApplicationEventHandle}" />
+    <aura:registerEvent name="ComponentEvent" type="c:ComponentEventForOpportunityToAccount" />
+    <aura:attribute name="opportunityList" type="list" />
+    <aura:attribute name="final" type="Integer" />
+    <aura:attribute name="accid" type="String" />
+    <!-- <aura:attribute name="toggleValue" type="String" /> -->
+    <aura:attribute name="revenueFinalValue" type="Integer" />
+
+    <aura:if isTrue="{!v.opportunityList}">
+        <lightning:card variant="Narrow" class="slds-box slds-box_x-small" title="Opportunities"
+            iconName="standard:opportunity" />
+        <aura:iteration var="opportunity" items="{!v.opportunityList}" indexVar="indx">
+            <div class="slds-truncate" title="{!opportunity.Name}">{!opportunity.Name}</div>
+            <div class="slds-truncate" title="{!opportunity.StageName}">{!opportunity.StageName}</div>
+            <div class="slds-truncate" title="{!opportunity.ExpectedRevenue}">
+                {!opportunity.ExpectedRevenue}</div>
+
+            <div class="slds-grid slds-gutters">
+                <label class="slds-checkbox_toggle slds-grid">
+                    <input type="checkbox" data-revenue="{!opportunity.ExpectedRevenue}" name="checkbox-toggle-16"
+                        value="checkbox-toggle-16" aria-describedby="checkbox-toggle-16" checked="{!v.opportunityList}"
+                        onchange="{!c.changeToggle}" />
+                    <span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive" style="margin-left: 15px;">
+                        <span class="slds-checkbox_faux"></span>
+                        <span class="slds-checkbox_on">Active</span>
+                        <span class="slds-checkbox_off">InActive</span>
+                    </span>
+                </label>
+            </div>
+        </aura:iteration>
+    </aura:if>
+</aura:component>

@@ -1,0 +1,10 @@
+<template>
+        <div class="slds-m-vertical_medium">
+            <lightning-card style="font-size:20px; font-weight:bolder; text-align:center">Count-Alphabet-Using-LWC</lightning-card>
+                <lightning-textarea type="text" placeholder="Write Your Valuable Thoughts..." onchange={handleCountChange} onkeypress={myFunction}
+                ></lightning-textarea>
+                    <span id="Letter"><b>Number of Letter :-</b> {countofletters}</span><br>
+                    <span id="Space"><b>Number of Space :-</b> {countofspaces}</span><br>
+                    <span id="Words"><b>Number of Words :-</b> {countofwords}</span>
+        </div>
+</template>

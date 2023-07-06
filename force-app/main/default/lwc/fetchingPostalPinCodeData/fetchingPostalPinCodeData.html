@@ -1,0 +1,25 @@
+<template>
+    <lightning-card>
+        <div class="slds-var-m-around_large">
+            <h2 style="font-size: 15px; font-weight: bolder; color: rgb(12, 132, 150)">Enter Pincode :- </h2>
+            <lightning-layout vertical-align="end">
+                <lightning-layout-item flexibility="grow">
+                    <lightning-input type="text" onfocusout={handleInputChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item class="slds-var-p-left_small">
+                    <lightning-button label="Search" variant="brand" onclick={handleSearch}></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <template if:true={pincode}>
+            <div style="height: 300px;">
+                <lightning-datatable
+                key-field="id"
+                data={pincodeData}
+                columns={columns}
+                hide-checkbox-column>
+            </lightning-datatable>
+        </div>
+    </template>
+    </lightning-card>
+</template>

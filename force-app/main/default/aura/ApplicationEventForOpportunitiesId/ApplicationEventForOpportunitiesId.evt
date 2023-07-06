@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="Event template ApplicationEventForOpportunitiesId">
+    <aura:attribute name = "oppId" type="String"/>
+</aura:event>

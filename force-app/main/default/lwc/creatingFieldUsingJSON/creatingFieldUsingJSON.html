@@ -1,0 +1,28 @@
+<template>
+    <lightning-card title="Description">
+        <div>
+            <!-- <template for:each={arrayPicklistValue} for:item="records" for:index="index">
+                <tr key={records.index}> -->
+            <template for:each={jsonToShow} for:item="records">
+                    <template if:true={isTrueValue}>
+                        <lightning-combobox label="Card Name" key={records.Id}
+                            name="ClassName" 
+                            onchange={selectedCardName} 
+                            options={arrayForDisplayValue} 
+                            placeholder="--None--" 
+                            value={value}
+                            required>
+                        </lightning-combobox>
+                    </template>
+        </template>
+        <!-- </div> -->
+            <lightning-input type="text" name="text" label="Description" onchange={onChangeEmail} required></lightning-input>
+        </div><br>
+
+        <div style="text-align:center">
+            <lightning-button variant="brand" label="Cancel" onclick={cancelRecord}></lightning-button>&nbsp;&nbsp;
+            <lightning-button variant="brand" label="Save" onclick={saveRecord}></lightning-button>
+
+        </div>
+    </lightning-card>
+</template>

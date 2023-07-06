@@ -1,0 +1,18 @@
+<template>
+    <div style="text-align: center;">
+        <lightning-card title="OppRelatedCon&AccUsingLWC">
+            <div>
+                <lightning-input type="text" value={oppNumber} label="Opp Number" onchange={oppoNum} required></lightning-input>
+                <lightning-input type="text" value={password} label="Password" onchange={passwords} required></lightning-input>
+            </div><br>
+            <template if:true={verifyValue}>
+                <div style="color: rgb(61, 44, 44);">
+                    <b>{message}</b>
+                </div>
+            </template><br>
+            <div style="text-align:center">
+                <lightning-button variant="brand" label="Verify" onclick={verifyCredential}></lightning-button>
+            </div>
+        </lightning-card>
+    </div>
+</template>
